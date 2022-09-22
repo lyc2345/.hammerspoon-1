@@ -37,7 +37,7 @@ end
 
 function PutToPasteboard(item)
   pasteboard.setContents(item)
-  hs.eventtap.keyStrokes(item)
+  hs.eventtap.keyStroke({ "cmd" }, "v")
   lastChanged = pasteboard.changeCount() -- Updates last_change to prevent item duplication when putting on paste
 end
 
@@ -52,7 +52,7 @@ function ClipboardToPastboard(item, key)
   end
 
   if (key.alt == true) then -- If the option/alt key is active when clicking on the menu, perform a "direct paste", without changing the clipboard
-    hs.eventtap.keyStrokes(item) -- Defeating paste blocking http://www.hammerspoon.org/go/#pasteblock
+    hs.eventtap.keyStroke({ "cmd" }, "v")
     return
   end
 
